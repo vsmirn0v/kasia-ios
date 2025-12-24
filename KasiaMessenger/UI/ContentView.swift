@@ -52,13 +52,7 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
         }
         .padding()
-        .background(
-            #if os(iOS)
-            Color(.secondarySystemBackground)
-            #else
-            Color(.windowBackgroundColor)
-            #endif
-        )
+        .background(composerBackgroundColor)
     }
 
     private var connectionStatus: some View {
@@ -70,6 +64,14 @@ struct ContentView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         }
+    }
+
+    private var composerBackgroundColor: Color {
+        #if os(iOS)
+        return Color(.secondarySystemBackground)
+        #else
+        return Color(.windowBackgroundColor)
+        #endif
     }
 }
 
