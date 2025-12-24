@@ -2,7 +2,6 @@ import Foundation
 import GRPC
 import NIOCore
 import NIOPosix
-import SwiftProtobuf
 
 final class ChatGRPCClient {
     private let host: String
@@ -32,11 +31,10 @@ final class ChatGRPCClient {
     func send(message: ChatMessage) async throws -> ChatMessage? {
         guard let channel else { throw ChatClientError.notConnected }
 
-        let request = Kasia_ChatMessage.with {
-            $0.sender = message.sender
-            $0.text = message.text
-            $0.timestamp = Int64(message.timestamp.timeIntervalSince1970)
-        }
+        var request = Kasia_ChatMessage()
+        request.sender = message.sender
+        request.text = message.text
+        request.timestamp = Int64(message.timestamp.timeIntervalSince1970)
 
         let client = Kasia_ChatServiceAsyncClient(channel: channel)
         let response = try await client.sendMessage(request)

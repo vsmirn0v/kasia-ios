@@ -1,74 +1,26 @@
 import Foundation
 import GRPC
-@preconcurrency import SwiftProtobuf
 
-public struct Kasia_ChatMessage: SwiftProtobuf.Message {
-    public var sender: String = ""
-    public var text: String = ""
-    public var timestamp: Int64 = 0
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
+public struct Kasia_ChatMessage {
+    public var sender: String
+    public var text: String
+    public var timestamp: Int64
 
+    public init(sender: String = "", text: String = "", timestamp: Int64 = 0) {
+        self.sender = sender
+        self.text = text
+        self.timestamp = timestamp
+    }
+
+    public static func with(_ configure: (inout Kasia_ChatMessage) -> Void) -> Kasia_ChatMessage {
+        var message = Kasia_ChatMessage()
+        configure(&message)
+        return message
+    }
+}
+
+public struct Kasia_SubscribeRequest {
     public init() {}
-}
-
-extension Kasia_ChatMessage {
-    public static let protoMessageName = "kasia.ChatMessage"
-
-    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-        1: .same(proto: "sender"),
-        2: .same(proto: "text"),
-        3: .same(proto: "timestamp")
-    ]
-
-    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let fieldNumber = try decoder.nextFieldNumber() {
-            switch fieldNumber {
-            case 1:
-                try decoder.decodeSingularStringField(value: &sender)
-            case 2:
-                try decoder.decodeSingularStringField(value: &text)
-            case 3:
-                try decoder.decodeSingularInt64Field(value: &timestamp)
-            default:
-                try decoder.skipField()
-            }
-        }
-    }
-
-    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        if !sender.isEmpty {
-            try visitor.visitSingularStringField(value: sender, fieldNumber: 1)
-        }
-        if !text.isEmpty {
-            try visitor.visitSingularStringField(value: text, fieldNumber: 2)
-        }
-        if timestamp != 0 {
-            try visitor.visitSingularInt64Field(value: timestamp, fieldNumber: 3)
-        }
-        try unknownFields.traverse(visitor: &visitor)
-    }
-}
-
-public struct Kasia_SubscribeRequest: SwiftProtobuf.Message {
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-}
-
-extension Kasia_SubscribeRequest {
-    public static let protoMessageName = "kasia.SubscribeRequest"
-
-    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [:]
-
-    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-        while let _ = try decoder.nextFieldNumber() {
-            try decoder.skipField()
-        }
-    }
-
-    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-        try unknownFields.traverse(visitor: &visitor)
-    }
 }
 
 public struct Kasia_ChatServiceAsyncClient {
