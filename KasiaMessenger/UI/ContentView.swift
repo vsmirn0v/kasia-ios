@@ -12,7 +12,7 @@ struct ContentView: View {
             }
             .navigationTitle("Kasia Messenger")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .automatic) {
                     connectionStatus
                 }
             }
@@ -30,7 +30,7 @@ struct ContentView: View {
                     .listRowBackground(Color.clear)
             }
             .listStyle(.plain)
-            .onChange(of: viewModel.messages) { _ in
+            .onChange(of: viewModel.messages) { _, _ in
                 guard let lastMessage = viewModel.messages.last else { return }
                 withAnimation {
                     proxy.scrollTo(lastMessage.id, anchor: .bottom)
@@ -52,7 +52,13 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
         }
         .padding()
-        .background(Color(.secondarySystemBackground))
+        .background(
+            #if os(iOS)
+            Color(.secondarySystemBackground)
+            #else
+            Color(.windowBackgroundColor)
+            #endif
+        )
     }
 
     private var connectionStatus: some View {
