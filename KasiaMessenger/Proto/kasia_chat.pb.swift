@@ -1,8 +1,8 @@
 import Foundation
 import GRPC
-import SwiftProtobuf
+@preconcurrency import SwiftProtobuf
 
-public struct Kasia_ChatMessage: SwiftProtobuf.Message, Sendable {
+public struct Kasia_ChatMessage: SwiftProtobuf.Message {
     public var sender: String = ""
     public var text: String = ""
     public var timestamp: Int64 = 0
@@ -24,11 +24,11 @@ extension Kasia_ChatMessage {
         while let fieldNumber = try decoder.nextFieldNumber() {
             switch fieldNumber {
             case 1:
-                sender = try decoder.decodeString()
+                try decoder.decodeSingularStringField(value: &sender)
             case 2:
-                text = try decoder.decodeString()
+                try decoder.decodeSingularStringField(value: &text)
             case 3:
-                timestamp = try decoder.decodeInt64()
+                try decoder.decodeSingularInt64Field(value: &timestamp)
             default:
                 try decoder.skipField()
             }
@@ -49,7 +49,7 @@ extension Kasia_ChatMessage {
     }
 }
 
-public struct Kasia_SubscribeRequest: SwiftProtobuf.Message, Sendable {
+public struct Kasia_SubscribeRequest: SwiftProtobuf.Message {
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
     public init() {}
