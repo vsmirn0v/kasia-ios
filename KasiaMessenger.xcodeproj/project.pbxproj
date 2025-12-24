@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1000001 /* KasiaMessengerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002 /* KasiaMessengerApp.swift */; };
+		A1000003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004 /* ContentView.swift */; };
+		A1000005 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000006 /* ChatMessage.swift */; };
+		A1000007 /* ConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000008 /* ConnectionState.swift */; };
+		A1000009 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000A /* ChatViewModel.swift */; };
+		A100000B /* ChatGRPCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000C /* ChatGRPCClient.swift */; };
+		A100000D /* kasia_chat.proto in Resources */ = {isa = PBXBuildFile; fileRef = A100000E /* kasia_chat.proto */; };
+		A100000F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000010 /* Assets.xcassets */; };
+		A1000011 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = A1000012 /* GRPC */; };
+		A1000013 /* NIOCore in Frameworks */ = {isa = PBXBuildFile; productRef = A1000014 /* NIOCore */; };
+		A1000015 /* NIOPosix in Frameworks */ = {isa = PBXBuildFile; productRef = A1000016 /* NIOPosix */; };
+		A1000017 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = A1000018 /* SwiftProtobuf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A1000002 /* KasiaMessengerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KasiaMessengerApp.swift; sourceTree = "<group>"; };
+		A1000004 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1000006 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		A1000008 /* ConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionState.swift; sourceTree = "<group>"; };
+		A100000A /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		A100000C /* ChatGRPCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGRPCClient.swift; sourceTree = "<group>"; };
+		A100000E /* kasia_chat.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = kasia_chat.proto; sourceTree = "<group>"; };
+		A1000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1000019 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A100001A /* KasiaMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = KasiaMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A100001B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000011 /* GRPC in Frameworks */,
+				A1000013 /* NIOCore in Frameworks */,
+				A1000015 /* NIOPosix in Frameworks */,
+				A1000017 /* SwiftProtobuf in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A100001C = {
+			isa = PBXGroup;
+			children = (
+				A100001D /* KasiaMessenger */,
+				A100001E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A100001D /* KasiaMessenger */ = {
+			isa = PBXGroup;
+			children = (
+				A100001F /* App */,
+				A1000020 /* UI */,
+				A1000021 /* Models */,
+				A1000022 /* Networking */,
+				A1000023 /* Proto */,
+				A1000024 /* Resources */,
+			);
+			path = KasiaMessenger;
+			sourceTree = "<group>";
+		};
+		A100001E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A100001A /* KasiaMessenger.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A100001F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1000002 /* KasiaMessengerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1000020 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A1000004 /* ContentView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A1000021 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1000006 /* ChatMessage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A1000022 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A1000008 /* ConnectionState.swift */,
+				A100000A /* ChatViewModel.swift */,
+				A100000C /* ChatGRPCClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A1000023 /* Proto */ = {
+			isa = PBXGroup;
+			children = (
+				A100000E /* kasia_chat.proto */,
+			);
+			path = Proto;
+			sourceTree = "<group>";
+		};
+		A1000024 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A1000010 /* Assets.xcassets */,
+				A1000019 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1000025 /* KasiaMessenger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000026 /* Build configuration list for PBXNativeTarget "KasiaMessenger" */;
+			buildPhases = (
+				A1000027 /* Sources */,
+				A100001B /* Frameworks */,
+				A1000028 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KasiaMessenger;
+			packageProductDependencies = (
+				A1000012 /* GRPC */,
+				A1000014 /* NIOCore */,
+				A1000016 /* NIOPosix */,
+				A1000018 /* SwiftProtobuf */,
+			);
+			productName = KasiaMessenger;
+			productReference = A100001A /* KasiaMessenger.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1000029 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A1000025 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A100002A /* Build configuration list for PBXProject "KasiaMessenger" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A100001C;
+			packageReferences = (
+				A100002B /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				A100002C /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+			);
+			productRefGroup = A100001E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1000025 /* KasiaMessenger */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1000028 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100000D /* kasia_chat.proto in Resources */,
+				A100000F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1000027 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000001 /* KasiaMessengerApp.swift in Sources */,
+				A1000003 /* ContentView.swift in Sources */,
+				A1000005 /* ChatMessage.swift in Sources */,
+				A1000007 /* ConnectionState.swift in Sources */,
+				A1000009 /* ChatViewModel.swift in Sources */,
+				A100000B /* ChatGRPCClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A100002D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = KasiaMessenger/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kasia.messenger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A100002E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = KasiaMessenger/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kasia.messenger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A100002F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1000030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1000026 /* Build configuration list for PBXNativeTarget "KasiaMessenger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A100002D /* Debug */,
+				A100002E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A100002A /* Build configuration list for PBXProject "KasiaMessenger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A100002F /* Debug */,
+				A1000030 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A100002B /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.22.0;
+			};
+		};
+		A100002C /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.26.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A1000012 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A100002B /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+		A1000014 /* NIOCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A100002B /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = NIOCore;
+		};
+		A1000016 /* NIOPosix */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A100002B /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = NIOPosix;
+		};
+		A1000018 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A100002C /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A1000029 /* Project object */;
+}
