@@ -97,8 +97,7 @@ public struct Kasia_ChatServiceClient {
         channel.makeUnaryCall(
             path: "/kasia.ChatService/SendMessage",
             request: request,
-            callOptions: callOptions ?? defaultCallOptions,
-            responseType: Kasia_ChatMessage.self
+            callOptions: callOptions ?? defaultCallOptions
         )
     }
 
@@ -109,8 +108,7 @@ public struct Kasia_ChatServiceClient {
         channel.makeServerStreamingCall(
             path: "/kasia.ChatService/Subscribe",
             request: request,
-            callOptions: callOptions ?? defaultCallOptions,
-            responseType: Kasia_ChatMessage.self
+            callOptions: callOptions ?? defaultCallOptions
         )
     }
 
@@ -123,7 +121,6 @@ public struct Kasia_ChatServiceClient {
             path: "/kasia.ChatService/Subscribe",
             request: request,
             callOptions: callOptions ?? defaultCallOptions,
-            responseType: Kasia_ChatMessage.self,
             handler: handler
         )
     }
