@@ -88,7 +88,7 @@ final class ChatGRPCClient {
                     let client = Kasia_ChatServiceClient(channel: channel)
                     let call = client.subscribe(Kasia_SubscribeRequest())
 
-                    for try await message in call.responses {
+                    for try await message in call.responseStream {
                         let incoming = ChatMessage(
                             sender: message.sender,
                             text: message.text,

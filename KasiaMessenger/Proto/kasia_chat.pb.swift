@@ -13,6 +13,10 @@ public struct Kasia_ChatMessage: GRPCPayload, Hashable, Sendable {
         self.timestamp = timestamp
     }
 
+    public init(serializedByteBuffer buffer: inout ByteBuffer) throws {
+        self = try Kasia_ChatMessage.deserialize(from: &buffer)
+    }
+
     public static func with(_ configure: (inout Kasia_ChatMessage) -> Void) -> Kasia_ChatMessage {
         var message = Kasia_ChatMessage()
         configure(&message)
@@ -63,6 +67,10 @@ public struct Kasia_ChatMessage: GRPCPayload, Hashable, Sendable {
 
 public struct Kasia_SubscribeRequest: GRPCPayload, Hashable, Sendable {
     public init() {}
+
+    public init(serializedByteBuffer buffer: inout ByteBuffer) throws {
+        _ = buffer
+    }
 
     public func serialize(into buffer: inout ByteBuffer) throws {
     }
