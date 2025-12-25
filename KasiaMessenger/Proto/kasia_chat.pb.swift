@@ -94,11 +94,11 @@ public struct Kasia_ChatServiceClient {
         _ request: Kasia_ChatMessage,
         callOptions: CallOptions? = nil
     ) -> UnaryCall<Kasia_ChatMessage, Kasia_ChatMessage> {
-        UnaryCall(
+        channel.makeUnaryCall(
             path: "/kasia.ChatService/SendMessage",
             request: request,
             callOptions: callOptions ?? defaultCallOptions,
-            channel: channel
+            responseType: Kasia_ChatMessage.self
         )
     }
 
@@ -106,11 +106,11 @@ public struct Kasia_ChatServiceClient {
         _ request: Kasia_SubscribeRequest,
         callOptions: CallOptions? = nil
     ) -> ServerStreamingCall<Kasia_SubscribeRequest, Kasia_ChatMessage> {
-        ServerStreamingCall(
+        channel.makeServerStreamingCall(
             path: "/kasia.ChatService/Subscribe",
             request: request,
             callOptions: callOptions ?? defaultCallOptions,
-            channel: channel
+            responseType: Kasia_ChatMessage.self
         )
     }
 
@@ -119,12 +119,12 @@ public struct Kasia_ChatServiceClient {
         callOptions: CallOptions? = nil,
         handler: @escaping (Kasia_ChatMessage) -> Void
     ) -> ServerStreamingCall<Kasia_SubscribeRequest, Kasia_ChatMessage> {
-        ServerStreamingCall(
+        channel.makeServerStreamingCall(
             path: "/kasia.ChatService/Subscribe",
             request: request,
             callOptions: callOptions ?? defaultCallOptions,
-            channel: channel,
-            responseHandler: handler
+            responseType: Kasia_ChatMessage.self,
+            handler: handler
         )
     }
 }
