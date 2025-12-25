@@ -10,6 +10,7 @@ final class ChatGRPCClient {
     private var channel: GRPCChannel?
     private var responseStream: AsyncThrowingStream<ChatMessage, Error>?
     private var responseContinuation: AsyncThrowingStream<ChatMessage, Error>.Continuation?
+    private var subscribeCall: ServerStreamingCall<Kasia_SubscribeRequest, Kasia_ChatMessage>?
 
     init(host: String = "public.kaspa.network", port: Int = 50051) {
         self.host = host
@@ -71,6 +72,8 @@ final class ChatGRPCClient {
         responseContinuation?.finish()
         responseContinuation = nil
         responseStream = nil
+        subscribeCall?.cancel(promise: nil)
+        subscribeCall = nil
         try? await channel?.close().get()
         channel = nil
         try? await group?.shutdownGracefully()
@@ -86,9 +89,7 @@ final class ChatGRPCClient {
             Task {
                 do {
                     let client = Kasia_ChatServiceClient(channel: channel)
-                    let call = client.subscribe(Kasia_SubscribeRequest())
-
-                    for try await message in call.responseStream {
+                    let call = client.subscribe(Kasia_SubscribeRequest()) { message in
                         let incoming = ChatMessage(
                             sender: message.sender,
                             text: message.text,
@@ -97,8 +98,16 @@ final class ChatGRPCClient {
                         )
                         continuation.yield(incoming)
                     }
+                    subscribeCall = call
 
-                    continuation.finish()
+                    call.status.whenComplete { result in
+                        switch result {
+                        case .success:
+                            continuation.finish()
+                        case .failure(let error):
+                            continuation.finish(throwing: error)
+                        }
+                    }
                 } catch {
                     continuation.finish(throwing: error)
                 }

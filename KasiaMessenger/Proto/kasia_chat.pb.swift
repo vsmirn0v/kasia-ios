@@ -113,6 +113,20 @@ public struct Kasia_ChatServiceClient {
             channel: channel
         )
     }
+
+    public func subscribe(
+        _ request: Kasia_SubscribeRequest,
+        callOptions: CallOptions? = nil,
+        handler: @escaping (Kasia_ChatMessage) -> Void
+    ) -> ServerStreamingCall<Kasia_SubscribeRequest, Kasia_ChatMessage> {
+        ServerStreamingCall(
+            path: "/kasia.ChatService/Subscribe",
+            request: request,
+            callOptions: callOptions ?? defaultCallOptions,
+            channel: channel,
+            responseHandler: handler
+        )
+    }
 }
 
 private enum ProtobufWireType: Int {
