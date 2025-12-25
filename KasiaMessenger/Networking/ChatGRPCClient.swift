@@ -4,14 +4,20 @@ import NIOCore
 import NIOPosix
 
 final class ChatGRPCClient {
-    private let host: String
-    private let port: Int
+    private var host: String
+    private var port: Int
     private var group: EventLoopGroup?
     private var channel: GRPCChannel?
     private var responseStream: AsyncThrowingStream<ChatMessage, Error>?
     private var responseContinuation: AsyncThrowingStream<ChatMessage, Error>.Continuation?
 
-    init(host: String = "localhost", port: Int = 50051) {
+    init(host: String = "public.kaspa.network", port: Int = 50051) {
+        self.host = host
+        self.port = port
+    }
+
+    func updateEndpoint(host: String, port: Int) {
+        guard host != self.host || port != self.port else { return }
         self.host = host
         self.port = port
     }
@@ -28,16 +34,18 @@ final class ChatGRPCClient {
         startIncomingStreamIfNeeded()
     }
 
-    func send(message: ChatMessage) async throws -> ChatMessage? {
+    func send(message: ChatMessage, recipient: Contact?) async throws -> ChatMessage? {
         guard let channel else { throw ChatClientError.notConnected }
+        let _ = recipient
 
         var request = Kasia_ChatMessage()
         request.sender = message.sender
         request.text = message.text
         request.timestamp = Int64(message.timestamp.timeIntervalSince1970)
 
-        let client = Kasia_ChatServiceAsyncClient(channel: channel)
-        let response = try await client.sendMessage(request)
+        let client = Kasia_ChatServiceClient(channel: channel)
+        let call = client.sendMessage(request)
+        let response = try await call.response.get()
 
         return ChatMessage(
             sender: response.sender,
@@ -77,7 +85,7 @@ final class ChatGRPCClient {
 
             Task {
                 do {
-                    let client = Kasia_ChatServiceAsyncClient(channel: channel)
+                    let client = Kasia_ChatServiceClient(channel: channel)
                     let call = client.subscribe(Kasia_SubscribeRequest())
 
                     for try await message in call.responses {

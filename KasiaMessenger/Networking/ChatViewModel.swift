@@ -5,11 +5,20 @@ import SwiftUI
 final class ChatViewModel: ObservableObject {
     @Published private(set) var messages: [ChatMessage] = []
     @Published private(set) var connectionState: ConnectionState = .disconnected
+    @Published var draftMessage: String = ""
 
     private let chatClient: ChatGRPCClient
 
     init(chatClient: ChatGRPCClient = ChatGRPCClient()) {
         self.chatClient = chatClient
+    }
+
+    func updateEndpoint(host: String, port: String) {
+        guard let portValue = Int(port) else { return }
+        chatClient.updateEndpoint(host: host, port: portValue)
+        if connectionState == .connected {
+            Task { await disconnect() }
+        }
     }
 
     func connectIfNeeded() async {
@@ -25,12 +34,17 @@ final class ChatViewModel: ObservableObject {
     }
 
     func send(text: String) {
+        send(text: text, recipient: nil)
+    }
+
+    func send(text: String, recipient: Contact?) {
         let outgoing = ChatMessage(sender: "Me", text: text, isIncoming: false)
         messages.append(outgoing)
+        draftMessage = ""
 
         Task {
             do {
-                if let reply = try await chatClient.send(message: outgoing) {
+                if let reply = try await chatClient.send(message: outgoing, recipient: recipient) {
                     messages.append(reply)
                 }
             } catch {
@@ -43,6 +57,11 @@ final class ChatViewModel: ObservableObject {
                 connectionState = .failed
             }
         }
+    }
+
+    func disconnect() async {
+        await chatClient.disconnect()
+        connectionState = .disconnected
     }
 
     private func listenForIncomingMessages() {

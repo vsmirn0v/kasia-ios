@@ -16,6 +16,15 @@
 		A100000D /* kasia_chat.proto in Resources */ = {isa = PBXBuildFile; fileRef = A100000E /* kasia_chat.proto */; };
 		A100000F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000010 /* Assets.xcassets */; };
 		A1000031 /* kasia_chat.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000032 /* kasia_chat.pb.swift */; };
+		A1000033 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100003C /* AppState.swift */; };
+		A1000034 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100003D /* Contact.swift */; };
+		A1000035 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100003E /* KeychainStore.swift */; };
+		A1000036 /* SeedPhraseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100003F /* SeedPhraseGenerator.swift */; };
+		A1000037 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000040 /* SetupView.swift */; };
+		A1000038 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000041 /* SettingsView.swift */; };
+		A1000039 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000042 /* ContactsView.swift */; };
+		A100003A /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000043 /* ChatListView.swift */; };
+		A100003B /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000044 /* ChatDetailView.swift */; };
 		A1000011 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = A1000012 /* GRPC */; };
 		A1000013 /* NIOCore in Frameworks */ = {isa = PBXBuildFile; productRef = A1000014 /* NIOCore */; };
 		A1000015 /* NIOPosix in Frameworks */ = {isa = PBXBuildFile; productRef = A1000016 /* NIOPosix */; };
@@ -34,6 +43,15 @@
 		A1000019 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A100001A /* KasiaMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = KasiaMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1000032 /* kasia_chat.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kasia_chat.pb.swift; sourceTree = "<group>"; };
+		A100003C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A100003D /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		A100003E /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		A100003F /* SeedPhraseGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseGenerator.swift; sourceTree = "<group>"; };
+		A1000040 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		A1000041 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A1000042 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		A1000043 /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
+		A1000044 /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +83,7 @@
 				A100001F /* App */,
 				A1000020 /* UI */,
 				A1000021 /* Models */,
+				A1000045 /* Wallet */,
 				A1000022 /* Networking */,
 				A1000023 /* Proto */,
 				A1000024 /* Resources */,
@@ -84,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				A1000002 /* KasiaMessengerApp.swift */,
+				A100003C /* AppState.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -92,6 +112,11 @@
 			isa = PBXGroup;
 			children = (
 				A1000004 /* ContentView.swift */,
+				A1000040 /* SetupView.swift */,
+				A1000041 /* SettingsView.swift */,
+				A1000042 /* ContactsView.swift */,
+				A1000043 /* ChatListView.swift */,
+				A1000044 /* ChatDetailView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -100,8 +125,18 @@
 			isa = PBXGroup;
 			children = (
 				A1000006 /* ChatMessage.swift */,
+				A100003D /* Contact.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A1000045 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				A100003E /* KeychainStore.swift */,
+				A100003F /* SeedPhraseGenerator.swift */,
+			);
+			path = Wallet;
 			sourceTree = "<group>";
 		};
 		A1000022 /* Networking */ = {
@@ -211,11 +246,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1000001 /* KasiaMessengerApp.swift in Sources */,
+				A1000033 /* AppState.swift in Sources */,
 				A1000003 /* ContentView.swift in Sources */,
+				A1000037 /* SetupView.swift in Sources */,
+				A1000038 /* SettingsView.swift in Sources */,
+				A1000039 /* ContactsView.swift in Sources */,
+				A100003A /* ChatListView.swift in Sources */,
+				A100003B /* ChatDetailView.swift in Sources */,
 				A1000005 /* ChatMessage.swift in Sources */,
+				A1000034 /* Contact.swift in Sources */,
 				A1000007 /* ConnectionState.swift in Sources */,
 				A1000009 /* ChatViewModel.swift in Sources */,
 				A100000B /* ChatGRPCClient.swift in Sources */,
+				A1000035 /* KeychainStore.swift in Sources */,
+				A1000036 /* SeedPhraseGenerator.swift in Sources */,
 				A1000031 /* kasia_chat.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

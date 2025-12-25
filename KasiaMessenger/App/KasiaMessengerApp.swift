@@ -2,12 +2,12 @@ import SwiftUI
 
 @main
 struct KasiaMessengerApp: App {
-    @StateObject private var viewModel = ChatViewModel()
+    @StateObject private var appState = AppState()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(viewModel)
+                .environmentObject(appState)
         }
     }
 }
