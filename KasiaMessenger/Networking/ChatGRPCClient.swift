@@ -89,7 +89,7 @@ final class ChatGRPCClient {
             Task {
                 do {
                     let client = Kasia_ChatServiceClient(channel: channel)
-                    let call = client.subscribe(Kasia_SubscribeRequest()) { message in
+                    let call = client.subscribe(Kasia_SubscribeRequest(), handler: { message in
                         let incoming = ChatMessage(
                             sender: message.sender,
                             text: message.text,
@@ -97,7 +97,7 @@ final class ChatGRPCClient {
                             isIncoming: true
                         )
                         continuation.yield(incoming)
-                    }
+                    })
                     subscribeCall = call
 
                     call.status.whenComplete { result in

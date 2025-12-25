@@ -103,17 +103,6 @@ public struct Kasia_ChatServiceClient {
 
     public func subscribe(
         _ request: Kasia_SubscribeRequest,
-        callOptions: CallOptions? = nil
-    ) -> ServerStreamingCall<Kasia_SubscribeRequest, Kasia_ChatMessage> {
-        channel.makeServerStreamingCall(
-            path: "/kasia.ChatService/Subscribe",
-            request: request,
-            callOptions: callOptions ?? defaultCallOptions
-        )
-    }
-
-    public func subscribe(
-        _ request: Kasia_SubscribeRequest,
         callOptions: CallOptions? = nil,
         handler: @escaping (Kasia_ChatMessage) -> Void
     ) -> ServerStreamingCall<Kasia_SubscribeRequest, Kasia_ChatMessage> {
