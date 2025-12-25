@@ -3,16 +3,16 @@ import SwiftUI
 
 @MainActor
 final class AppState: ObservableObject {
-    @Published var seedPhrase: String {
+    @Published var seedPhrase: String = "" {
         didSet { storedSeedPhrase = seedPhrase }
     }
-    @Published var nodeHost: String {
+    @Published var nodeHost: String = "public.kaspa.network" {
         didSet { storedNodeHost = nodeHost }
     }
-    @Published var nodePort: String {
+    @Published var nodePort: String = "50051" {
         didSet { storedNodePort = nodePort }
     }
-    @Published var contacts: [Contact] {
+    @Published var contacts: [Contact] = [] {
         didSet { persistContacts() }
     }
 
