@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package kasia;
+
+service ChatService {
+  rpc SendMessage(ChatMessage) returns (ChatMessage);
+  rpc Subscribe(SubscribeRequest) returns (stream ChatMessage);
+}
+
+message ChatMessage {
+  string sender = 1;
+  string text = 2;
+  int64 timestamp = 3;
+}
+
+message SubscribeRequest {}
